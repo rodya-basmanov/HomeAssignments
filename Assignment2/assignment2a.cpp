@@ -6,38 +6,67 @@ st135699@student.spbu.ru
 ## Description
 Home assingment 2a*/
 
-
 #include <iostream>
 #include <fstream>
-#include <filesystem>
-#include <algorithm>
 
 int main()
 {
-    std::string inputFileName = "source.pdf";
-    std::streampos fileSize = std::filesystem::file_size(inputFileName); 
+    std::string inputFileName = "source.txt";
 
-    std::ifstream openFile;
-    openFile.open(inputFileName, std::ios::binary | std::ios::in);
+    int count;
+    std::cout << "Введите количество чисел: ";
+    std::cin >> count;
+
+    if (count <= 0) {
+        std::cout << "Количество должно быть положительным." << std::endl;
+        return 1;
+    }
+
+    std::ofstream openFile(inputFileName);
     if (!openFile.is_open())
     {
-        std::cout << "Error file" << std::endl;
+        std::cout << "Ошибка при открытии файла" << std::endl;
+        return 1;
     }
 
-    char* buffer = new char[fileSize];
-
-    openFile.read(buffer, fileSize);
+    std::cout << "Введите " << count << " чисел:" << std::endl;
+    for (int i = 0; i < count; ++i)
+    {
+        int number;
+        std::cin >> number;
+        openFile << number << " ";
+    }
     openFile.close();
 
-    for (std::streampos i = 0; i < fileSize / 2; ++i) 
-    { 
-        std::swap(buffer[i], buffer[fileSize - 1 - i]);
+    std::ifstream readFile(inputFileName);
+    if (!readFile.is_open())
+    {
+        std::cout << "Ошибка при открытии файла" << std::endl;
+        return 1;
     }
-    std::ofstream outputFile;
-    std::string outputFileName = "output.pdf";
-    outputFile.open(outputFileName, std::ios::binary | std::ios::out);
-    outputFile.write(buffer, fileSize);
-    outfile.close();
-    delete[] buffer;
+
+    int* numbers = new int[count];
+    for (int i = 0; i < count; i++)
+    {
+        readFile >> numbers[i];
+    }
+    readFile.close();
+
+    int* result = new int[count];
+    for (int i = 0; i < count; ++i)
+    {
+        result[i] = numbers[count - 1 - i];
+    }
+
+    std::ofstream outputFile("output.txt");
+    for (int i = 0; i < count; ++i)
+    {
+        outputFile << result[i] << " ";
+    }
+    outputFile.close();
+
+    delete[] numbers;
+    delete[] result;
+
     return 0;
 }
