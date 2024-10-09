@@ -10,6 +10,60 @@ Home assingment 2b*/
 #include <string>
 #include <sstream>
 
+class Stack 
+{
+private:
+    int* stack;
+    int high;
+    int capacity;
+public:
+    Stack(int size)
+    {
+        stack = new int[size];
+        high = -1;
+        capacity = size;
+    }
+    ~Stack()
+    {
+        delete[] stack;
+    }
+    void push(int value)
+    {
+        if (high < capacity - 1)
+        {
+            stack[++high] = value;
+        }
+        else 
+        {
+            std::cout <<"Stack overflow";
+        }
+    }
+    int pop()
+    {
+        if(high >= 0)
+        {
+            return stack[high--];
+        }
+        else
+        {
+            std::cout << "Stack underflow";
+            return -1;
+        }
+    }
+    int peek() const
+    {
+        if (high >= 0)
+        {
+            return stack[high];
+        }
+        else
+        {
+            std::cout << "Stack empty";
+            return -1;
+        }
+    }
+};
+
 int main()
 {
     std::string input;
@@ -53,24 +107,14 @@ int main()
                     return 1;
                 }
             }
-            
+            stack.push(result);
+        }
+        else
+        {
+            std::cout << "Error symbol" << symbol;
+            return 1;
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    std::cout << "Result: " << stack.peek() << std::endl;
     return 0;
 }
