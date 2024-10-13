@@ -9,7 +9,7 @@ $(TARGET): $(SRCS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRCS)
 
 clean:
-	rm -f $(TARGET) output.txt
-	echo -n > source.txt
+	rm -f $(TARGET) output.bin
+	echo -n > source.bin
 
 .PHONY: all clean

@@ -11,7 +11,7 @@ Home assingment 2a*/
 
 int main()
 {
-    std::string inputFileName = "source.txt";
+    std::string inputFileName = "source.bin";
     int count;
     std::cout << "Введите количество чисел: ";
     std::cin >> count;
@@ -46,7 +46,7 @@ int main()
     {
         result[i] = numbers[count - 1 - i];
     }
-    std::ofstream outputFile("output.txt");
+    std::ofstream outputFile("output.bin");
     for (int i = 0; i < count; ++i)
     {
         outputFile << result[i] << " ";
