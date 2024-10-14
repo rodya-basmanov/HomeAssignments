@@ -9,62 +9,9 @@ Home assingment 2b*/
 #include <iostream>
 #include <string>
 #include <sstream>
+#include "Stack.h"
 
-class Stack 
-{
-private:
-    int* stack;
-    int high;
-    int capacity;
-public:
-    Stack(int size)
-    {
-        stack = new int[size];
-        high = -1;
-        capacity = size;
-    }
-    ~Stack()
-    {
-        delete[] stack;
-    }
-    void push(int value)
-    {
-        if (high < capacity - 1)
-        {
-            stack[++high] = value;
-        }
-        else 
-        {
-            std::cout <<"Stack overflow";
-        }
-    }
-    int pop()
-    {
-        if(high >= 0)
-        {
-            return stack[high--];
-        }
-        else
-        {
-            std::cout << "Stack underflow";
-            return -1;
-        }
-    }
-    int peek() const
-    {
-        if (high >= 0)
-        {
-            return stack[high];
-        }
-        else
-        {
-            std::cout << "Stack empty";
-            return -1;
-        }
-    }
-};
-
-int main()
+int main() 
 {
     std::string input;
     std::cout << "Enter the expression in the reverse Polish entry: ";
@@ -72,49 +19,52 @@ int main()
     std::istringstream iss(input);
     std::string symbol;
     Stack stack(200);
-    while(iss >> symbol)
+    
+    while (iss >> symbol) 
     {
-        if(std::isdigit(symbol[0]))
+        if (std::isdigit(symbol[0])) 
         {
             stack.push(std::stoi(symbol));
-        }
-        else if (symbol == "+" || symbol == "-" || symbol == "*" || symbol == "/")
+        } 
+        else if (symbol == "+" || symbol == "-" || symbol == "*" || symbol == "/") 
         {
             int b = stack.pop();
             int a = stack.pop();
             int result = 0;
-            if (symbol == "+")
+
+            if (symbol == "+") 
             {
                 result = a + b;
-            }
-            else if (symbol == "-")
+            } 
+            else if (symbol == "-") 
             {
                 result = a - b;
-            }
-            else if (symbol == "*")
+            } 
+            else if (symbol == "*") 
             {
                 result = a * b;
-            }
-            else if (symbol == "/")
+            } 
+            else if (symbol == "/") 
             {
-                if(b!=0)
+                if (b != 0) 
                 {
                     result = a / b;
-                }
+                } 
                 else 
                 {
-                    std::cout << "Error";
+                    std::cout << "Error: division by zero";
                     return 1;
                 }
             }
             stack.push(result);
-        }
-        else
+        } 
+        else 
         {
-            std::cout << "Error symbol" << symbol;
+            std::cout << "Error: invalid symbol " << symbol;
             return 1;
         }
     }
+
     std::cout << "Result: " << stack.peek() << std::endl;
     return 0;
 }

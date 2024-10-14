@@ -1,12 +1,17 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall
-TARGET = assignment2b
-SRC = assignment2b.cpp
 
-all: $(TARGET)
+all: assignment2b
 
-$(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
+assignment2b: assignment2b.o Stack.o
+	$(CXX) $(CXXFLAGS) -o assignment2b assignment2b.o Stack.o
+
+assignment2b.o: assignment2b.cpp Stack.h
+	$(CXX) $(CXXFLAGS) -c assignment2b.cpp
+
+Stack.o: Stack.cpp Stack.h
+	$(CXX) $(CXXFLAGS) -c Stack.cpp
 
 clean:
-	rm -f $(TARGET)
+	rm -f *.o assignment2b
+
