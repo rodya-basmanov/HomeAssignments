@@ -7,7 +7,7 @@ class Autobot : public Transformer
 private:
     bool isLeader;
 public:
-    Autobot(int strength, int speed, int armor);
+    Autobot(int strength, int speed, int armor, bool isLeader);
 
     bool getIsLeader();
     void setIsLeader(bool isLeader);

@@ -11,9 +11,9 @@ int Transformer::getStrength()
 {
     return strength;
 }
-void Transformer::setStrength(int stregnth)
+void Transformer::setStrength(int strength)
 {
-    this->strength = stregnth;
+    this->strength = strength;
 }
 int Transformer::getSpeed()
 {
