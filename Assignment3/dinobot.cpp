@@ -7,9 +7,9 @@ Dinobot::Dinobot(int strength, int speed, int armor, std::string form) : Transfo
 }
 Dinobot::~Dinobot()
 {
-    std::cout << "Dinobot destroyed";
+    std::cout << "Dinobot destroyed\n";
 }
 void Dinobot::roar()
 {
-    std::cout << "Dinobot roars in " << form << " form";
+    std::cout << "Dinobot roars in " << form << " form" << std::endl;
 }

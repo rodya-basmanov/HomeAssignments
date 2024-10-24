@@ -7,7 +7,7 @@ Autobot::Autobot(int strength, int speed, int armor, bool isLeader) : Transforme
 }
 Autobot::~Autobot()
 {
-    std::cout << "Autobot destroyed";
+    std::cout << "Autobot destroyed\n";
 }
 bool Autobot::getIsLeader()
 {

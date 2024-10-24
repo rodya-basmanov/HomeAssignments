@@ -1,6 +1,8 @@
 #ifndef TRANSFORMER_H
 #define TRANSFORMER_H
 
+#include "engine.h"
+
 class Transformer
 {
 private:

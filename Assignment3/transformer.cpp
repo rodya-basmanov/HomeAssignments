@@ -11,7 +11,7 @@ Transformer::Transformer(int strength, int speed, int armor, int fuel) : engine(
 }
 Transformer::~Transformer()
 {
-    std::cout << "Transformer destroyed";
+    std::cout << "Transformer destroyed\n";
 }
 int Transformer::getStrength()
 {

@@ -5,10 +5,10 @@ Decepticon::Decepticon(int strength, int speed, int armor, std::string weaponTyp
 
 Decepticon::~Decepticon()
 {
-    std::cout << "Decepticon destroyed";
+    std::cout << "Decepticon destroyed\n";
 }
 
 void Decepticon::attack()
 {
-    std::cout << "Decepticon attack with " << weapon.getType();
+    std::cout << "Decepticon attack with " << weapon.getType() << std::endl;
 }
