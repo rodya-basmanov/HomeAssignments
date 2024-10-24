@@ -8,7 +8,7 @@ Weapon::Weapon(std::string type)
 
 Weapon::~Weapon()
 {
-    std::cout << "Weapon destroyed";
+    std::cout << "Weapon destroyed\n";
 }
 
 std::string Weapon::getType()
