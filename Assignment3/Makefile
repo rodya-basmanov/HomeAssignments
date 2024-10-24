@@ -1,16 +1,35 @@
-all: program
+TARGET = assignment3
 
-program: main.o autobot.o transformer.o
-	g++ -o program main.o autobot.o transformer.o
+SRCS = main.cpp \
+       autobot.cpp \
+       decepticon.cpp \
+       dinobot.cpp \
+       engine.cpp \
+       transformer.cpp \
+       weapon.cpp
 
-main.o: main.cpp autobot.h
-	g++ -std=c++17 -Wall -c main.cpp
+HEADERS = autobot.h \
+          decepticon.h \
+          dinobot.h \
+          engine.h \
+          transformer.h \
+          weapon.h
 
-autobot.o: autobot.cpp autobot.h transformer.h
-	g++ -std=c++17 -Wall -c autobot.cpp
+OBJS = $(SRCS:.cpp=.o)
 
-transformer.o: transformer.cpp transformer.h
-	g++ -std=c++17 -Wall -c transformer.cpp
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) -o $@ $^
+
+%.o: %.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) -c $<
 
 clean:
-	rm -f *.o assignment3
+	rm -f $(OBJS) $(TARGET)
+
+.PHONY: all clean
+
