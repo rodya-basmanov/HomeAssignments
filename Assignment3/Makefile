@@ -8,6 +8,8 @@ SRCS = main.cpp \
        transformer.cpp \
        weapon.cpp
 
+TEST_SRCS = test.cpp
+
 HEADERS = autobot.h \
           decepticon.h \
           dinobot.h \
@@ -16,6 +18,7 @@ HEADERS = autobot.h \
           weapon.h
 
 OBJS = $(SRCS:.cpp=.o)
+TEST_OBJS = $(TEST_SRCS:.cpp=.o)
 
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall
@@ -28,8 +31,11 @@ $(TARGET): $(OBJS)
 %.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $<
 
-clean:
-	rm -f $(OBJS) $(TARGET)
+test: $(OBJS) $(TEST_SRCS)
+	$(CXX) $(CXXFLAGS) -o test_program $(TEST_SRCS) $(OBJS) -lgtest -lpthread
 
-.PHONY: all clean
+clean:
+	rm -f $(OBJS) $(TARGET) test_program
+
+.PHONY: all clean test
 
