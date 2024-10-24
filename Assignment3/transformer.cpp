@@ -1,4 +1,5 @@
 #include "transformer.h"
+#include "engine.h"
 #include <iostream>
 
 Transformer::Transformer(int strength, int speed, int armor, int fuel) : engine(Engine())
