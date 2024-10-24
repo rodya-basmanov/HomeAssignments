@@ -8,6 +8,7 @@ private:
     bool isLeader;
 public:
     Autobot(int strength, int speed, int armor, bool isLeader);
+    ~Autobot();
 
     bool getIsLeader();
     void setIsLeader(bool isLeader);
