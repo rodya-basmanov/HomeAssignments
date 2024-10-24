@@ -7,8 +7,12 @@ private:
     int strength;
     int speed;
     int armor;
+    int fuel;
+    Engine engine;
 public:
-    Transformer(int strength, int speed, int armor);
+    Transformer(int strength, int speed, int armor, int fuel);
+    ~Transformer();
+
     int getStrength();
     void setStrength(int strength);
 
@@ -18,7 +22,11 @@ public:
     int getArmor();
     void setArmor(int armor);
 
+    int getFuel();
+    void setFuel(int fuel);
+
     void transform();
+    void refuel();
 
 };
 #endif
