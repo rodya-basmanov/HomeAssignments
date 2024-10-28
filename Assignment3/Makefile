@@ -1,41 +1,19 @@
-TARGET = assignment3
-
-SRCS = main.cpp \
-       autobot.cpp \
-       decepticon.cpp \
-       dinobot.cpp \
-       engine.cpp \
-       transformer.cpp \
-       weapon.cpp
-
-TEST_SRCS = test.cpp
-
-HEADERS = autobot.h \
-          decepticon.h \
-          dinobot.h \
-          engine.h \
-          transformer.h \
-          weapon.h
-
-OBJS = $(SRCS:.cpp=.o)
-TEST_OBJS = $(TEST_SRCS:.cpp=.o)
-
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall
+CXXFLAGS = -std=c++17 -Wall -I/usr/include -pthread
+GTEST_DIR = ~/googletest/googletest/build/lib
 
-all: $(TARGET)
+SRC = autobot.cpp decepticon.cpp dinobot.cpp transformer.cpp
+OBJ = $(SRC:.cpp=.o)
+TEST_SRC = test.cpp
+TEST_OBJ = $(TEST_SRC:.cpp=.o)
 
-$(TARGET): $(OBJS)
-	$(CXX) -o $@ $^
+all: test
 
-%.o: %.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) -c $<
+test: $(OBJ) $(TEST_OBJ)
+	$(CXX) $(OBJ) $(TEST_OBJ) -o test -L$(GTEST_DIR) -lgtest -lgtest_main -lpthread
 
-test: $(OBJS) $(TEST_SRCS)
-	$(CXX) $(CXXFLAGS) -o test_program $(TEST_SRCS) $(OBJS) -lgtest -lpthread
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(TARGET) test_program
-
-.PHONY: all clean test
-
+	rm -f $(OBJ) $(TEST_OBJ) test
