@@ -1,34 +1,23 @@
 #ifndef TRANSFORMER_H
 #define TRANSFORMER_H
 
-#include "engine.h"
-
-class Transformer
-{
-private:
-    int strength;
-    int speed;
-    int armor;
-    int fuel;
-    Engine engine;
+class TransformerBase {
 public:
-    Transformer(int strength, int speed, int armor, int fuel);
-    ~Transformer();
-
-    int getStrength();
-    void setStrength(int strength);
-
-    int getSpeed();
-    void setSpeed(int speed);
-
-    int getArmor();
-    void setArmor(int armor);
-
-    int getFuel();
-    void setFuel(int fuel);
-
-    void transform();
-    void refuel();
-
+    TransformerBase();
+    bool move();
+    bool jump();
+    bool attack();
+    void setWeapon(unsigned int weapon) {
+        currentWeapon = weapon;
+    }
+    unsigned int getWeapon() {
+        return currentWeapon;
+    }
+protected:
+    unsigned int health;
+    unsigned int armor;
+    unsigned int currentWeapon;
+    unsigned int firepower;
 };
+
 #endif

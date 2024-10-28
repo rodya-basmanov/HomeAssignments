@@ -1,19 +1,17 @@
 #ifndef DINOBOT_H
 #define DINOBOT_H
 
+#include <iostream>
 #include "transformer.h"
-#include <string>
 
-class Dinobot : public Transformer
-{
-private:
-    std::string form;
+class MiniRobot : public TransformerBase {
 public:
-    Dinobot(int strength, int speed, int armor, std::string form);
-    ~Dinobot();
-
-    void roar();
+    bool transformToVehicle();
+private:
+    unsigned int health;
+    unsigned int armor;
+    unsigned int currentWeapon;
+    unsigned int firepower;
 };
-
 
 #endif

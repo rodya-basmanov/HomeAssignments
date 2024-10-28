@@ -1,18 +1,17 @@
-#ifndef AUTOBOT_H
-#define AUTOBOT_H
+#ifndef AUTOBOTS_H
+#define AUTOBOTS_H
+
+#include <iostream>
 #include "transformer.h"
 
-class Autobot : public Transformer
-{
-private:
-    bool isLeader;
+class Autobot : public TransformerBase {
 public:
-    Autobot(int strength, int speed, int armor, bool isLeader);
-    ~Autobot();
-
-    bool getIsLeader();
-    void setIsLeader(bool isLeader);
-
-    void specialMove();
+    bool transformToVehicle();
+private:
+    unsigned int health;
+    unsigned int armor;
+    unsigned int firepower;
+    unsigned int currentWeapon;
 };
+
 #endif

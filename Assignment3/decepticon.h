@@ -1,18 +1,17 @@
 #ifndef DECEPTICON_H
 #define DECEPTICON_H
 
+#include <iostream>
 #include "transformer.h"
-#include "weapon.h"
 
-class Decepticon : public Transformer
-{
-private:
-    Weapon weapon;
+class Decepticon : public TransformerBase {
 public:
-    Decepticon(int strength, int speed, int armor, std::string weaponType);
-    ~Decepticon();
-
-    void attack();
+    bool transformToVehicle();
+private:
+    unsigned int health;
+    unsigned int armor;
+    unsigned int currentWeapon;
+    unsigned int firepower;
 };
 
 #endif

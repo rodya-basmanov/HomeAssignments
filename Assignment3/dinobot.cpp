@@ -1,15 +1,6 @@
-#include <iostream>
 #include "dinobot.h"
 
-Dinobot::Dinobot(int strength, int speed, int armor, std::string form) : Transformer(strength, speed, armor, 100)
-{
-    this->form = form;
-}
-Dinobot::~Dinobot()
-{
-    std::cout << "Dinobot destroyed\n";
-}
-void Dinobot::roar()
-{
-    std::cout << "Dinobot roars in " << form << " form" << std::endl;
+bool MiniRobot::transformToVehicle() {
+    std::cout << "Transforming to dinobot!" << std::endl;
+    return true;
 }
