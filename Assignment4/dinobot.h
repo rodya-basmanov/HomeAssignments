@@ -12,14 +12,24 @@ assignment 4 */
 #include <iostream>
 #include "transformer.h"
 
-class MiniRobot : public TransformerBase {
+class Dinobot : public TransformerBase
+{
 public:
+    Dinobot();
+    Dinobot(unsigned int health, unsigned int armor, unsigned int firepower, unsigned int currentWeapon);
+
     bool transformToVehicle();
+
+    bool operator>(const Dinobot& other) const;
+    bool operator<(const Dinobot& other) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Dinobot& dinobot);
+
 private:
     unsigned int health;
     unsigned int armor;
-    unsigned int currentWeapon;
     unsigned int firepower;
+    unsigned int currentWeapon;
 };
 
 #endif
