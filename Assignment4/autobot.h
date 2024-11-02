@@ -12,7 +12,8 @@ assignment 3 */
 #include <iostream>
 #include "transformer.h"
 
-class Autobot : public TransformerBase {
+class Autobot : public TransformerBase
+{
 public:
     Autobot();
     Autobot(unsigned int health, unsigned int armor, unsigned int firepower, unsigned int currentWeapon);
