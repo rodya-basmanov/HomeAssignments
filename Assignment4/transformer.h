@@ -9,18 +9,26 @@ assignment 4 */
 #ifndef TRANSFORMER_H
 #define TRANSFORMER_H
 
-class TransformerBase {
+#include <iostream>
+
+class TransformerBase
+{
 public:
     TransformerBase();
     bool move();
     bool jump();
     bool attack();
-    void setWeapon(unsigned int weapon) {
+    void setWeapon(unsigned int weapon)
+    {
         currentWeapon = weapon;
     }
-    unsigned int getWeapon() {
+    unsigned int getWeapon() const
+    {
         return currentWeapon;
     }
+
+    friend std::ostream& operator<<(std::ostream& os, const TransformerBase& transformer);
+
 protected:
     unsigned int health;
     unsigned int armor;
