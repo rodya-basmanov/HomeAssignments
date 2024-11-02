@@ -12,14 +12,23 @@ assignment 4 */
 #include <iostream>
 #include "transformer.h"
 
-class Decepticon : public TransformerBase {
+class Decepticon : public TransformerBase
+{
 public:
+    Decepticon();
+    Decepticon(unsigned int health, unsigned int armor, unsigned int firepower, unsigned int currentWeapon);
+
     bool transformToVehicle();
+    bool operator>(const Decepticon& other) const;
+    bool operator<(const Decepticon& other) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Decepticon& decepticon);
+
 private:
     unsigned int health;
     unsigned int armor;
-    unsigned int currentWeapon;
     unsigned int firepower;
+    unsigned int currentWeapon;
 };
 
 #endif
