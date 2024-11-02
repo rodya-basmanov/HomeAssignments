@@ -22,6 +22,10 @@ public:
 
     bool operator>(const Dinobot& other) const;
     bool operator<(const Dinobot& other) const;
+    unsigned int getWeapon() const
+    {
+        return currentWeapon;
+    }
 
     friend std::ostream& operator<<(std::ostream& os, const Dinobot& dinobot);
 
