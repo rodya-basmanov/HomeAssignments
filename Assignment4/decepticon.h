@@ -21,6 +21,10 @@ public:
     bool transformToVehicle();
     bool operator>(const Decepticon& other) const;
     bool operator<(const Decepticon& other) const;
+    unsigned int getWeapon() const
+    {
+        return currentWeapon;
+    }
 
     friend std::ostream& operator<<(std::ostream& os, const Decepticon& decepticon);
 
