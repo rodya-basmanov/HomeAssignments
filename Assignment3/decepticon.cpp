@@ -9,6 +9,6 @@ assignment 3 */
 #include "decepticon.h"
 
 bool Decepticon::transformToVehicle() {
-    std::cout << "Transforming to vehicle!" << std::endl;
+    std::cout << "Decepticon transforming to vehicle!" << std::endl;
     return true;
 }
