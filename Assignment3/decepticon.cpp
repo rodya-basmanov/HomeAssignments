@@ -8,7 +8,17 @@ assignment 3 */
 
 #include "decepticon.h"
 
-bool Decepticon::transformToVehicle() {
-    std::cout << "Decepticon transforming to vehicle!" << std::endl;
-    return true;
+decepticon::decepticon(uint health, uint armor, uint weapon, uint power, uint danger_level)
+    : transformer(health, armor, weapon, power), _danger_level(danger_level) {}
+
+uint decepticon::get_danger_level() const {
+    return _danger_level;
+}
+
+void decepticon::set_danger_level(uint danger_level) {
+    _danger_level = danger_level;
+}
+
+void decepticon::transform() const {
+    
 }
