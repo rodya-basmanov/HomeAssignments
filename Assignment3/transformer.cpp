@@ -8,24 +8,49 @@ assignment 3 */
 
 #include "transformer.h"
 
-TransformerBase::TransformerBase()
-    : health(100), armor(50), currentWeapon(10), firepower(75),
-      primaryWeapon("Blaster", 25), defensiveArmor("Titanium", 40) {}
+transformer::transformer(uint health, uint armor, uint weapon, uint power)
+    : _health(health), _armor(armor), _weapon(weapon), _power(power) {}
 
-TransformerBase::~TransformerBase() {}
+uint transformer::get_health() const {
+    return _health;
+}
 
-bool TransformerBase::move() {
+void transformer::set_health(uint health) {
+    _health = health;
+}
+
+uint transformer::get_armor() const {
+    return _armor;
+}
+
+void transformer::set_armor(uint armor) {
+    _armor = armor;
+}
+
+uint transformer::get_weapon() const {
+    return _weapon;
+}
+
+void transformer::set_weapon(uint weapon) {
+    _weapon = weapon;
+}
+
+uint transformer::get_power() const {
+    return _power;
+}
+
+void transformer::set_power(uint power) {
+    _power = power;
+}
+
+bool transformer::motion() const {
     return true;
 }
 
-bool TransformerBase::jump() {
+bool transformer::jump() const {
     return true;
 }
 
-bool TransformerBase::attack() {
-    if (currentWeapon > 0) {
-        currentWeapon--;
-        return true;
-    }
-    return false;
+bool transformer::attack() const {
+    return true;
 }
