@@ -9,12 +9,18 @@ assignment 3 */
 #ifndef DINOBOT_H
 #define DINOBOT_H
 
-#include <iostream>
 #include "transformer.h"
 
-class MiniRobot : public TransformerBase {
+class dinobot : public transformer {
+private:
+    std::string _dinosaur_type;
+
 public:
-    bool transformToVehicle();
+    dinobot(uint health, uint armor, uint weapon, uint power, const std::string& dinosaur_type);
+    std::string get_dinosaur_type() const;
+    void set_dinosaur_type(const std::string& dinosaur_type);
+
+    void transform() const override;
 };
 
 #endif
