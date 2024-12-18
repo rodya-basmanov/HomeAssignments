@@ -15,11 +15,6 @@ assignment 3 */
 class Decepticon : public TransformerBase {
 public:
     bool transformToVehicle();
-private:
-    unsigned int health;
-    unsigned int armor;
-    unsigned int currentWeapon;
-    unsigned int firepower;
 };
 
 #endif
