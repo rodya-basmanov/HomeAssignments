@@ -1,15 +1,19 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall
-TARGET = assignment2a
-SRCS = assignment2a.cpp
+CXXFLAGS = -Werror -Wpedantic -Wall -std=c++17
 
-all: $(TARGET)
+all: main
 
-$(TARGET): $(SRCS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRCS)
+main: main.o reverse.o
+	$(CXX) $(CXXFLAGS) -o main main.o reverse.o
+
+main.o: main.cpp reverse.h
+	$(CXX) $(CXXFLAGS) -c main.cpp
+
+reverse.o: reverse.cpp reverse.h
+	$(CXX) $(CXXFLAGS) -c reverse.cpp
+
+run: main
+	./main
 
 clean:
-	rm -f $(TARGET) output.bin
-	echo -n > source.bin
-
-.PHONY: all clean
+	rm -f *.o reversed_* main
