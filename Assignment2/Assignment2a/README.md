@@ -8,4 +8,4 @@ Home assingment 2a
 ## Build
 make
 ## Run
-./assignment2a
+./main
