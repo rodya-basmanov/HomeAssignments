@@ -9,6 +9,6 @@ assignment 3 */
 #include "dinobot.h"
 
 bool MiniRobot::transformToVehicle() {
-    std::cout << "Transforming to dinobot!" << std::endl;
+    std::cout << "MiniRobot transforming to dinobot!" << std::endl;
     return true;
 }
