@@ -11,9 +11,9 @@ assignment 3 */
 
 TEST(TransformerTest, AttackDecreasesWeapon) {
     TransformerBase transformer;
-    unsigned int initialWeapon = transformer.getWeapon();
+    unsigned int initialWeapon = transformer.getCurrentWeapon();
     transformer.attack();
-    EXPECT_EQ(transformer.getWeapon(), initialWeapon - 1);
+    EXPECT_EQ(transformer.getCurrentWeapon(), initialWeapon - 1);
 }
 
 TEST(TransformerTest, JumpSuccessful) {
@@ -28,6 +28,18 @@ TEST(TransformerTest, MoveSuccessful) {
 
 TEST(TransformerTest, SetAndGetWeapon) {
     TransformerBase transformer;
-    transformer.setWeapon(15);
-    EXPECT_EQ(transformer.getWeapon(), 15);
+    transformer.setCurrentWeapon(15);
+    EXPECT_EQ(transformer.getCurrentWeapon(), 15);
+}
+
+TEST(TransformerTest, GetPrimaryWeapon) {
+    TransformerBase transformer;
+    EXPECT_EQ(transformer.getPrimaryWeapon().getName(), "Blaster");
+    EXPECT_EQ(transformer.getPrimaryWeapon().getDamage(), 25);
+}
+
+TEST(TransformerTest, GetDefensiveArmor) {
+    TransformerBase transformer;
+    EXPECT_EQ(transformer.getDefensiveArmor().getType(), "Titanium");
+    EXPECT_EQ(transformer.getDefensiveArmor().getStrength(), 40);
 }
