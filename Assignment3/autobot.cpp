@@ -9,6 +9,6 @@ assignment 3 */
 #include "autobot.h"
 
 bool Autobot::transformToVehicle() {
-    std::cout << "Transforming to vehicle!" << std::endl;
+    std::cout << "Autobot transforming to vehicle!" << std::endl;
     return true;
 }
